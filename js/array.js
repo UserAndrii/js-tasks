@@ -15,7 +15,7 @@ const fruits = ["apple", "plum", "pear", "orange"];
 
 const firstElement = fruits[0];
 const secondElement = fruits[1];
-const lastElement = fruits[3];
+// const lastElement = fruits[3];
 
 fruits[1] = "peach";
 fruits[3] = "banana";
@@ -23,8 +23,9 @@ fruits[3] = "banana";
 const fruitsArrayLength = fruits.length;
 
 const lastElementIndex = fruits.length - 1;
-const lastElement = fruits[fruits.length - 1];
+const lastElement = fruits[lastElementIndex];
 
 console.log(fruits);
 console.log(fruitsArrayLength);
 console.log(lastElementIndex);
+console.log(lastElement);
