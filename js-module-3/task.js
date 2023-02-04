@@ -592,61 +592,78 @@
 
 
 // --------------------------------------------------
-// const atTheOldToad = {
-//   potions: [
-//     { name: "Speed potion", price: 460 },
-//     { name: "Dragon breath", price: 780 },
-//     { name: "Stone skin", price: 520 },
-//   ],
+const atTheOldToad = {
+  potions: [
+    { name: "Speed potion", price: 460 },
+    { name: "Dragon breath", price: 780 },
+    { name: "Stone skin", price: 520 },
+  ],
 
-//   getPotions() {
-//     return this.potions;
-//   },
+  getPotions() {
+    return this.potions;
+  },
 
-//   addPotion(newPotion) {
-//     for (const potion of this.potions) {
-//       if (potion.name === newPotion.name) {
-//         return `Error! Potion ${newPotion.name} is already in your inventory!`;
-//       }
-//     }
-//     this.potions.push(newPotion);
-//     return this.potions;
-//   },
+  addPotion(newPotion) {
+    for (const potion of this.potions) {
+      if (potion.name === newPotion.name) {
+        return `Error! Potion ${newPotion.name} is already in your inventory!`;
+      }
+    }
+    this.potions.push(newPotion);
+    return this.potions;
+  },
 
-//   removePotion(potionName) {
-//     for (let i = 0; i < this.potions.length; i += 1) {
+    removePotion(potionName) {
+    const { potions } = this;
+    for (let i = 0; i < potions.length; i += 1) {
 
-//       if (potionName === this.potions[i].name) {
-//         this.potions.splice(i, 1);
-//         return this.potions;
-//       }
-//     }
-//     return `Potion ${potionName} is not in inventory!`;
-//   },
+      if (potionName === potions[i].name) {
+        potions.splice(i, 1);
+        return potions;
+      }
+    }
+    return `Potion ${potionName} is not in inventory!`;
+  },
 
-//   updatePotionName(oldName, newName) {
-//     for (let i = 0; i < this.potions.length; i += 1) {
+    updatePotionName(oldName, newName) {
+    const { potions } = this;
+    for (let i = 0; i < potions.length; i += 1) {
 
-//       if (oldName === this.potions[i].name) {
-//         this.potions[i].name = newName;
-//         return this.potions;
-//       }
-//     }
-//     return `Potion ${oldName} is not in inventory!`;
-//   },
-// };
+      if (oldName === potions[i].name) {
+        potions[i].name = newName;
+        return potions;
+      }
+    }
+    return `Potion ${oldName} is not in inventory!`;
+  },
+};
 
-// console.log(atTheOldToad.getPotions());
+console.table(atTheOldToad.getPotions());
 
-// console.log(atTheOldToad.addPotion({ name: "Invisibility", price: 620 }));
-// console.log(atTheOldToad.addPotion({ name: "Power potion", price: 270 }));
-// console.log(atTheOldToad.addPotion({ name: "Speed potion", price: 620 }));
-// console.log(atTheOldToad.addPotion({ name: "Dragon breath", price: 700 }));
-// console.log(atTheOldToad.addPotion({ name: "Stone skin", price: 240 }));
+console.log(atTheOldToad.addPotion({ name: "Invisibility", price: 620 }));
+console.log(atTheOldToad.addPotion({ name: "Power potion", price: 270 }));
+console.log(atTheOldToad.addPotion({ name: "Speed potion", price: 620 }));
+console.log(atTheOldToad.addPotion({ name: "Dragon breath", price: 700 }));
+console.log(atTheOldToad.addPotion({ name: "Stone skin", price: 240 }));
 
-// console.log(atTheOldToad.removePotion("Invisibility"));
-// console.log(atTheOldToad.removePotion("Power potion"));
+console.log(atTheOldToad.removePotion("Invisibility"));
+console.log(atTheOldToad.removePotion("Power potion"));
 
-// console.log(atTheOldToad.updatePotionName("Dragon breath", "Polymorth"));
-// console.log(atTheOldToad.updatePotionName("Stone skin", "Invulnerability potion"));
-// console.log(atTheOldToad.updatePotionName("Stone skin", "Invulnerability potion"));
+console.log(atTheOldToad.updatePotionName("Dragon breath", "Polymorth"));
+console.table(atTheOldToad.updatePotionName("Stone skin", "Invulnerability potion"));
+console.log(atTheOldToad.updatePotionName("Stone skin", "Invulnerability potion"));
+
+function registerGuest(name, callback) {
+  console.log(`Реєструємо гостя ${name}.`);
+  callback(name);
+}
+
+// Передаємо інлайн функцію greet у якості колбека
+registerGuest("Манго", function greet(name) {
+  console.log(`Ласкаво просимо ${name}.`);
+});
+
+// Передаємо інлайн функцію notify у якості колбека
+registerGuest("Полі", function notify(name) {
+  console.log(`Шановний(а) ${name}, ваш номер буде готовий за 30 хвилин.`);
+});
